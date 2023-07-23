@@ -1,0 +1,15 @@
+
+.active{
+    background-color:#ccc !important; 
+  }
+  
+  nav ul li{
+    list-style:none;
+    float:left;
+    padding-right:20px;
+  }
+ 
+  nav{
+    margin-left:-30px;
+  }
+
