@@ -1,3 +1,22 @@
+I have used to Xampp to run this project in laravel 9 and php 8.
+run "php artisan serve" after starting apache on xampp and the link will redirect to my task UI page.
+
+In my local I have set the domain name in C:\Windows\System32\drivers\etc Hosts file as
+127.0.0.1           weather.report
+and run
+php artisan serve --host=weather.report
+will redirect to my task UI page
+http://weather.report:8000/
+
+As the api endpoint with free subscription has data of every 3hrs until 5 days I have shown that iself in the UI
+
+
+
+
+
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
