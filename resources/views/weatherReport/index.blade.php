@@ -19,22 +19,22 @@
             $('ul li a').click(function() {
                 $('li a').removeClass("active");
                 $(this).addClass("active");
-            });
+            }); 
 
             $("#showCurrentWeather").click(function() {
                 $("#currentWeather").show();
                 $('#next24Hours').hide();
-                $('#next7days').hide();
+                $('#next5Days').hide();
             });
 
             $("#showNext24Hours").click(function() {
                 $("#next24Hours").show();
                 $('#currentWeather').hide();
-                $('#next7days').hide();
+                $('#next5Days').hide();
             });
 
-            $("#showNext7Days").click(function() {
-                $("#next7days").show();
+            $("#showNext5Days").click(function() {
+                $("#next5Days").show();
                 $('#currentWeather').hide();
                 $('#next24Hours').hide();
             });
@@ -95,8 +95,8 @@
             </div>
             @endif
 
-            @if(isset($futureWeatherForecast['next7Days']))
-            <div id="next7days" style="display:none;" class="next7days ">
+            @if(isset($futureWeatherForecast['next5Days']))
+            <div id="next5Days" style="display:none;" class="next5Days ">
                 <table class="table table-responsive table-bordered ">
                     <thead>
                         <tr class="table-active">
@@ -106,7 +106,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($futureWeatherForecast['next7Days'] as $data)
+                        @foreach($futureWeatherForecast['next5Days'] as $data)
                         <tr>
                             <th scope="row">{{$data['date']}}</th>
                             <td>{{$data['weather']}}</td>
@@ -122,9 +122,13 @@
         <div class="row">
             <nav>
                 <ul>
+                @if(isset($currentWeather))
                     <li><a class="menu active" href="javascript:void(0)" id="showCurrentWeather">Current Weather </a></li>
+                @else
+                <li><a class="menu" href="javascript:void(0)" id="showCurrentWeather">Current Weather </a></li>
+                @endif
                     <li><a class="menu" href="javascript:void(0)" id="showNext24Hours">Next 24 hours </a></li>
-                    <li><a class="menu" href="javascript:void(0)" id="showNext7Days">Next 7 Days</a></li>
+                    <li><a class="menu" href="javascript:void(0)" id="showNext5Days">Next 7 Days</a></li>
                 </ul>
             </nav>
         </div>

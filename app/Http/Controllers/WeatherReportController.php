@@ -57,7 +57,7 @@ class WeatherReportController extends Controller
             $responseData = $this->getOpenWeatherMapApiResponse($apiUrl);
 
             if ($responseData['cod'] == 200) {
-                $next24HoursData = $next7DaysData = [];
+                $next24HoursData = $next5DaysData = [];
                 $previousDate = $currentDate = null;
 
                 foreach ($responseData['list'] as $data) {
@@ -75,15 +75,15 @@ class WeatherReportController extends Controller
                         array_push($next24HoursData, $next24Hours);
                     }
                     if (($previousDate == null && $dateTime > $currentDate->copy()->endOfDay()) || ($dateTime == $previousDate)) {
-                        $next7Days['date'] = Carbon::parse($dateTime)->format('D, M d');
-                        $next7Days['weather'] = $data['weather'][0]['main'];
-                        $next7Days['temperature'] = $data['main']['temp'];
-                        array_push($next7DaysData, $next7Days);
+                        $next5Days['date'] = Carbon::parse($dateTime)->format('D, M d');
+                        $next5Days['weather'] = $data['weather'][0]['main'];
+                        $next5Days['temperature'] = $data['main']['temp'];
+                        array_push($next5DaysData, $next5Days);
                         $previousDate = $dateTime->copy()->addDays(1);
                     }
                 }
                 $dataToBeReturned['next24Hours'] = $next24HoursData;
-                $dataToBeReturned['next7Days'] = $next7DaysData;
+                $dataToBeReturned['next5Days'] = $next5DaysData;
             } else {
                 $dataToBeReturned['errorMessage'] = $responseData['message'];
             }
